@@ -1,4 +1,5 @@
 from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
@@ -14,6 +15,7 @@ def get_models(random_state=42):
     """
     return {
         "Logistic Regression": LogisticRegression(max_iter=1000),
+        "Decision Tree": DecisionTreeClassifier(random_state=random_state),
         "Random Forest": RandomForestClassifier(n_estimators=100, random_state=random_state),
         "Gradient Boosting": GradientBoostingClassifier(random_state=random_state),
         "SVM": SVC(probability=True, random_state=random_state),
@@ -26,6 +28,12 @@ def get_param_grids():
     Returns parameter grids for hyperparameter tuning.
     """
     return {
+        "Decision Tree": {
+            'classifier__criterion': ['gini', 'entropy', 'log_loss'],
+            'classifier__max_depth': [None, 3, 5, 7, 10, 15],
+            'classifier__min_samples_split': [2, 5, 10],
+            'classifier__min_samples_leaf': [1, 2, 4, 6]
+        },
         "Random Forest": {
             'classifier__n_estimators': [100, 200],
             'classifier__max_depth': [None, 10, 20],

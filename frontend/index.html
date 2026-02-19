@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-container">
+        <header>
+            <div class="logo-icon">❤️</div>
+            <h1>PulseAI Predictor</h1>
+            <p>Advanced diagnostic assessment tool</p>
+        </header>
+
+        <form id="prediction-form">
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" required min="1" max="120" placeholder="e.g. 45">
+                </div>
+
+                <div class="input-group">
+                    <label for="sex">Sex</label>
+                    <select id="sex" name="sex" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="cp">Chest Pain Type (0-3)</label>
+                    <select id="cp" name="cp" required>
+                        <option value="0">Typical Angina (0)</option>
+                        <option value="1">Atypical Angina (1)</option>
+                        <option value="2">Non-anginal Pain (2)</option>
+                        <option value="3">Asymptomatic (3)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="trestbps">Resting BP (mm Hg)</label>
+                    <input type="number" id="trestbps" name="trestbps" required placeholder="e.g. 120">
+                </div>
+
+                <div class="input-group">
+                    <label for="chol">Cholesterol (mg/dl)</label>
+                    <input type="number" id="chol" name="chol" required placeholder="e.g. 200">
+                </div>
+
+                <div class="input-group">
+                    <label for="fbs">Fasting Blood Sugar > 120</label>
+                    <select id="fbs" name="fbs" required>
+                        <option value="0">False (0)</option>
+                        <option value="1">True (1)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="restecg">Resting ECG (0-2)</label>
+                    <select id="restecg" name="restecg" required>
+                        <option value="0">Normal (0)</option>
+                        <option value="1">ST-T Wave Abnormality (1)</option>
+                        <option value="2">Left Ventricular Hypertrophy (2)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="thalach">Max Heart Rate</label>
+                    <input type="number" id="thalach" name="thalach" required placeholder="e.g. 150">
+                </div>
+
+                <div class="input-group">
+                    <label for="exang">Exercise Induced Angina</label>
+                    <select id="exang" name="exang" required>
+                        <option value="0">No (0)</option>
+                        <option value="1">Yes (1)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="oldpeak">ST Depression</label>
+                    <input type="number" id="oldpeak" name="oldpeak" step="0.1" required placeholder="e.g. 1.0">
+                </div>
+
+                <div class="input-group">
+                    <label for="slope">ST Segment Slope</label>
+                    <select id="slope" name="slope" required>
+                        <option value="0">Upsloping (0)</option>
+                        <option value="1">Flat (1)</option>
+                        <option value="2">Downsloping (2)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="ca">Major Vessels (0-4)</label>
+                    <input type="number" id="ca" name="ca" min="0" max="4" required placeholder="0">
+                </div>
+
+                <div class="input-group">
+                    <label for="thal">Thalassemia (0-3)</label>
+                    <select id="thal" name="thal" required>
+                        <option value="0">0</option>
+                        <option value="1">Normal (1)</option>
+                        <option value="2">Fixed Defect (2)</option>
+                        <option value="3">Reversable Defect (3)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" id="submit-btn">
+                <span>Analyze Patient Data</span>
+                <div class="spinner" id="loading-spinner"></div>
+            </button>
+        </form>
+
+        <div id="result-container" class="hidden">
+            <h2 id="result-title">Analysis Complete</h2>
+            <div class="gauge-container">
+                <div class="gauge-circle" id="risk-gauge">
+                    <span id="risk-percentage">--%</span>
+                </div>
+            </div>
+            <p id="result-desc" class="result-text">Awaiting input...</p>
+            <button id="reset-btn" class="secondary-btn">New Assessment</button>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

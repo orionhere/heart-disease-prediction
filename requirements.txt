@@ -5,3 +5,6 @@ seaborn
 scikit-learn
 joblib
 ipykernel
+fastapi
+uvicorn
+pydantic
